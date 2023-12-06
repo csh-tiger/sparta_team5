@@ -1,4 +1,6 @@
 package com.example.spartahw2_kiosk
 
-class Order {
-}
+data class Order (
+    val name: String,
+    val price: Double
+)
