@@ -29,7 +29,7 @@ fun burgerMenu(){
     var a = readln().toIntOrNull()
     when (a){
         0 -> return
-        else -> println("올바른 메뉴를 선택해주세요")
+        else -> println("올바른 메뉴를 선택해주세요.")
     }
 
 
