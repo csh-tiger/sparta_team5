@@ -1,4 +1,5 @@
 package com.example.spartahw2_kiosk
 
-class OrderMenu {
+interface OrderMenu {
+    fun orderMenu(): Order?
 }
