@@ -1,20 +1,25 @@
 import com.example.spartahw2_kiosk.BeerMenu
-import com.example.spartahw2_kiosk.Menu
 import com.example.spartahw2_kiosk.BurgerMenu
+import com.example.spartahw2_kiosk.Cheeseburger
 import com.example.spartahw2_kiosk.CustardMenu
+import com.example.spartahw2_kiosk.Delivery
 import com.example.spartahw2_kiosk.DiscountCoupon
 import com.example.spartahw2_kiosk.DrinksMenu
+import com.example.spartahw2_kiosk.Hamburger
 import com.example.spartahw2_kiosk.Order
-import com.example.spartahw2_kiosk.thousand
-import kotlinx.coroutines.async
+import com.example.spartahw2_kiosk.ShackBurger
+import com.example.spartahw2_kiosk.ShroomBurger
+import com.example.spartahw2_kiosk.SmokeShack
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.lang.NumberFormatException
+import java.text.DecimalFormat
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import kotlin.concurrent.thread
+import java.util.concurrent.ThreadLocalRandom
+import kotlin.NumberFormatException
 
 fun String.isNumeric(): Boolean {
     return try {
@@ -33,7 +38,23 @@ fun main() {
     var orderWaitCount = 0
     var accum = 0.0
     var usecoupon = ArrayList<Order>()
-    /*thread {
+    var deliveryList = ArrayList<Delivery>()
+    var df = DecimalFormat("#.#")
+    var df2 = DecimalFormat("#.####")
+    thread {
+        while (true){
+            runBlocking {
+                launch {
+                    delay(10000)
+                    println("배달의민족 주문")
+                    val new = addRandomDelivery()
+                    println("${new.name} | ${new.price} | 위치: (${new.latitude}, ${new.longitude})")
+                    deliveryList.add(new)
+                }
+            }
+        }
+    }
+    thread {
         while (true) {
             runBlocking {
                 launch {
@@ -42,7 +63,7 @@ fun main() {
                 }
             }
         }
-    }*/
+    }
     println("SHAKESHACK BURGER 에 오신걸 환영합니다.")
     println("아래 메뉴판을 보시고 메뉴를 골라 입력해주세요.")
     while (true) {
@@ -55,6 +76,7 @@ fun main() {
         println("6. Cancel          | 진행중인 주문을 취소합니다.")
         println("7. Recharge        | 잔액을 충전 합니다")
         println("8. Discount coupon | 할인 쿠폰 발급")
+        println("9. DeliveryList    | 배달요청목록")
         println("0. 종료             | 프로그램 종료")
         val menuList = listOf(BurgerMenu(), CustardMenu(), DrinksMenu(), BeerMenu())
         try {
@@ -79,7 +101,7 @@ fun main() {
             5 -> {
                 println("아래와 같이 주문 하시겠습니까? (현재 주문대기수 ${orderWaitCount})")
                 println("[ Orders ]")
-                var totalPrice = orders.sumByDouble { it.price * it.quantity }
+                var totalPrice = (orders.sumByDouble { it.price * it.quantity } * 10).toInt() / 10.0
                 for (order in orders) {
                     println("${order.name} - ${order.price} W - ${order.quantity}개")
                 }
@@ -87,7 +109,12 @@ fun main() {
                 println("W ${totalPrice}")
                 println("")
                 println("1. 주문      2. 메뉴판")
-                var a = readln().toInt()
+                try {
+                    a = readln().toInt()
+                } catch (e: NumberFormatException) {
+                    println("숫자로만 입력해주세요")
+                    continue
+                }
                 when (a) {
                     1 -> {
                         print("쿠폰을 사용하시겠습니까? 현재보유중인 쿠폰: ")
@@ -96,14 +123,24 @@ fun main() {
                         }
                         println(" ")
                         println("1. 예     2. 아니오")
-                        var a = readln().toInt()
+                        try {
+                            a = readln().toInt()
+                        } catch (e: NumberFormatException) {
+                            println("숫자로만 입력해주세요")
+                            continue
+                        }
                         when (a) {
                             1 -> {
                                 println("어떤 쿠폰을 쓰시겠습니까?")
                                 println("1. 1000원할인 쿠폰 | 15000원 이상 주문시 사용가능")
                                 println("2. 3000원할인 쿠폰 | 30000원 이상 주문시 사용가능")
                                 println("3. 1000원할인 쿠폰 | 50000원 이상 주문시 사용가능")
-                                var a = readln().toInt()
+                                try {
+                                    a = readln().toInt()
+                                } catch (e: NumberFormatException) {
+                                    println("숫자로만 입력해주세요")
+                                    continue
+                                }
                                 when (a) {
                                     1 -> {
                                         if (totalPrice >= 15.0) {
@@ -194,7 +231,12 @@ fun main() {
 
             7 -> {
                 println("충전 금액을 입력하세요 ")
-                cash += recharge(readln().toInt())
+                try {
+                    cash += recharge(readln().toInt())
+                }catch (e: NumberFormatException){
+                    println("숫자로만 입력해주세요")
+                    continue
+                }
                 println("[ Cash ]")
                 println("${cash} W")
             }
@@ -210,7 +252,11 @@ fun main() {
                     println("${i.name} ${i.quantity}개")
                 }
             }
-
+            9 -> {
+                for (i in deliveryList){
+                    println("${i.name} | ${i.price} | 위치: (${i.latitude}, ${i.longitude})")
+                }
+            }
             0 -> break
             else -> {
                 println("잘못된 번호를 입력했어요 다시 입력해주세요.")
@@ -238,4 +284,14 @@ fun usecoupon(a: String, coupons: ArrayList<Order>): ArrayList<Order>? {
         }
     }
     return null
+}
+fun addRandomDelivery(): Delivery{
+    val listmenu = listOf(
+        ShackBurger(), SmokeShack(), ShroomBurger(),
+        Cheeseburger(), Hamburger()
+    )
+    val randomMenu = listmenu.random()
+    val latitude = ThreadLocalRandom.current().nextInt(0, 3600000) / 10000.0
+    val longitude = ThreadLocalRandom.current().nextInt(0, 3600000) / 10000.0
+    return Delivery (randomMenu.name,randomMenu.price,latitude,longitude)
 }
