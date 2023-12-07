@@ -8,7 +8,7 @@ class Burger() {
         println("3. Shroom Burger | W 9.4 | 몬스터 치즈와 체다 치즈로 속을 채운 베지테리안 버거")
         println("4. Cheeseburger  | W 6.9 | 포테이토 번과 비프패티, 치즈가 토핑된 치즈버거")
         println("5. Hamburger     | W 5.4 | 비프패티를 기반으로 야채가 들어간 기본버거")
-        println("0. 뒤로가기      | 뒤로가기")
+        println("0. 뒤로가기")
 
         val orders = ArrayList<Order>()
         var a = readln().toIntOrNull()

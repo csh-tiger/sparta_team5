@@ -4,7 +4,7 @@
             "outputFile": "com.example.spartahw2_kiosk.test.app-mergeDebugAndroidTestResources-3:/values/values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\zaq86\\.gradle\\caches\\transforms-3\\93accd4ab6e6449dfa751085017a7b7b\\transformed\\core-1.5.0\\res\\values\\values.xml",
+                    "source": "/Users/t2023-m0040/.gradle/caches/transforms-3/93accd4ab6e6449dfa751085017a7b7b/transformed/core-1.5.0/res/values/values.xml",
                     "from": {
                         "startLines": "4,11",
                         "startColumns": "0,0",

@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="30"
-        android:targetSdkVersion="33" />
+        android:targetSdkVersion="34" />
 
     <permission
         android:name="com.example.spartahw2_kiosk.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"

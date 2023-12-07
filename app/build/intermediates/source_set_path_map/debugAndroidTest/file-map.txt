@@ -1,6 +1,6 @@
-com.example.spartahw2_kiosk.test.app-core-1.5.0-0 C:\Users\zaq86\.gradle\caches\transforms-3\93accd4ab6e6449dfa751085017a7b7b\transformed\core-1.5.0\res
-com.example.spartahw2_kiosk.test.app-annotation-experimental-1.3.0-1 C:\Users\zaq86\.gradle\caches\transforms-3\9b136846b8bb93b1ff009e1138ccb2c4\transformed\annotation-experimental-1.3.0\res
-com.example.spartahw2_kiosk.test.app-androidTest-2 D:\teamproject\app\build\generated\res\resValues\androidTest\debug
-com.example.spartahw2_kiosk.test.app-mergeDebugAndroidTestResources-3 D:\teamproject\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
-com.example.spartahw2_kiosk.test.app-mergeDebugAndroidTestResources-4 D:\teamproject\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
-com.example.spartahw2_kiosk.test.app-merged_res-5 D:\teamproject\app\build\intermediates\merged_res\debugAndroidTest
+com.example.spartahw2_kiosk.test.app-core-1.5.0-0 /Users/t2023-m0040/.gradle/caches/transforms-3/93accd4ab6e6449dfa751085017a7b7b/transformed/core-1.5.0/res
+com.example.spartahw2_kiosk.test.app-annotation-experimental-1.3.0-1 /Users/t2023-m0040/.gradle/caches/transforms-3/9b136846b8bb93b1ff009e1138ccb2c4/transformed/annotation-experimental-1.3.0/res
+com.example.spartahw2_kiosk.test.app-androidTest-2 /Users/t2023-m0040/Desktop/kiosk_/app/build/generated/res/resValues/androidTest/debug
+com.example.spartahw2_kiosk.test.app-mergeDebugAndroidTestResources-3 /Users/t2023-m0040/Desktop/kiosk_/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
+com.example.spartahw2_kiosk.test.app-mergeDebugAndroidTestResources-4 /Users/t2023-m0040/Desktop/kiosk_/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
+com.example.spartahw2_kiosk.test.app-merged_res-5 /Users/t2023-m0040/Desktop/kiosk_/app/build/intermediates/merged_res/debugAndroidTest
