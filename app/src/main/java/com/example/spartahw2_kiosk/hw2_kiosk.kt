@@ -21,14 +21,6 @@ import kotlin.concurrent.thread
 import java.util.concurrent.ThreadLocalRandom
 import kotlin.NumberFormatException
 
-fun String.isNumeric(): Boolean {
-    return try {
-        this.toInt()
-        true
-    } catch (e: Exception) {
-        false
-    }
-}
 
 fun main() {
     var cash: Double = 0.0
