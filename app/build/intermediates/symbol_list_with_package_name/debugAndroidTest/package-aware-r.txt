@@ -1,0 +1,3 @@
+com.example.spartahw2_kiosk.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme
